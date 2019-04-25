@@ -1,0 +1,96 @@
+body {
+  background-color: black;
+}
+
+.card {
+  position: relative;
+  perspective: 600px;
+}
+
+.flip-cards {
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 80px;
+}
+
+.half {
+  position: relative;
+  width: 1.1em;
+  height: 0.5em;
+  background-color: black;
+  color: white;
+  margin: 1px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.letter {
+  text-transform: uppercase;
+  font-weight: bold;
+  position: relative
+}
+
+.top {
+  top: 50%; 
+}
+
+.bottom {
+  bottom: 50%;
+}
+
+.flip .half {
+  /* opacity: 0.5 */
+}
+
+.static .half {
+  background-color: rgb(43, 43, 43);
+}
+
+.static .bottom-half {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+
+/**
+*  FLIP
+*/
+.roller {
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  transform-origin: bottom center;
+  animation: flip 0.08s ease;
+}
+
+.roller .back {
+  transform: translateZ(-1px);
+  position: absolute;
+  top: 0;
+}
+
+/** rotate letter */
+.roller .back .letter.bottom {
+  transform: rotateX(180deg);
+  top: 50%;
+}
+
+/**
+ANIMATION
+**/
+@keyframes flip {
+  from {
+    transform: rotateX(0deg) translateY(0px);
+  }
+  to {
+    transform: rotateX(180deg) translateY(1px);
+  }
+}
