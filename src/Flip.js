@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Flip.css'
 import uuid from 'uuid'
 
@@ -39,7 +39,7 @@ class Flipper extends React.Component {
       let t = end[i]
       let charList = this.sliceAlphabet(c,t)
       cards.push(
-        <Card key={uuid()} charList={charList} flipping={true}/>
+        <Card key={uuid()} charList={charList} flipping={charList.length > 0}/>
       )
     }
     return cards
@@ -54,6 +54,24 @@ class Flipper extends React.Component {
     )
   }
 }
+
+// function Card(props) {
+//   let shouldFlip = props.charList.length > 0
+//   const [flipping, setFlipping] = useState(shouldFlip)
+//   return (
+//     <div className="card">
+//       {s.flipping && !s.done && <FlipCard current={s.current} next={s.next} cb={this.callback}/>}
+//       <div className="static">
+//         <div className="half top-half">
+//           <span className="letter top">{s.flipping ? s.next : s.current}</span>
+//         </div>
+//         <div className="half bottom-half">
+//           <span className="letter bottom">{s.current}</span>
+//         </div>
+//       </div> 
+//     </div>
+//   )
+// }
 
 class Card extends React.Component {
   constructor(props){
